@@ -1817,31 +1817,18 @@ footer {
             <label class="form-label">Institution</label>
             <input class="form-input" type="text" id="cf-institution" placeholder="Westfield University" required autocomplete="organization">
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Your Role</label>
-              <select class="form-select" id="cf-role" required>
-                <option value="" disabled selected>Select role</option>
-                <option>VP / CDO</option>
-                <option>Major Gift Officer</option>
-                <option>Planned Giving Officer</option>
-                <option>Annual Fund Director</option>
-                <option>Advancement Operations</option>
-                <option>Campaign Director</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Endowment Size</label>
-              <select class="form-select" id="cf-endowment">
-                <option value="" disabled selected>Select range</option>
-                <option>Under $50M</option>
-                <option>$50M — $250M</option>
-                <option>$250M — $1B</option>
-                <option>Over $1B</option>
-                <option>Prefer not to say</option>
-              </select>
-            </div>
+          <div class="form-group">
+            <label class="form-label">Your Role</label>
+            <select class="form-select" id="cf-role" required>
+              <option value="" disabled selected>Select role</option>
+              <option>VP / CDO</option>
+              <option>Major Gift Officer</option>
+              <option>Planned Giving Officer</option>
+              <option>Annual Fund Director</option>
+              <option>Advancement Operations</option>
+              <option>Campaign Director</option>
+              <option>Other</option>
+            </select>
           </div>
           <div class="form-group">
             <label class="form-label">Work Email</label>
@@ -1938,7 +1925,7 @@ function handleContactSubmit(e) {
     lastName:    document.getElementById('cf-lname').value.trim(),
     institution: document.getElementById('cf-institution').value.trim(),
     role:        document.getElementById('cf-role').value,
-    endowment:   document.getElementById('cf-endowment').value,
+
     email:       document.getElementById('cf-email').value.trim(),
     source:      'donororbit.com'
   };
