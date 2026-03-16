@@ -1760,6 +1760,228 @@ footer {
 
 
 <!-- ═══════════════════════════════════════
+     VSO LIVE DEMO
+     ═══════════════════════════════════════ -->
+<section class="demo-section" id="demo" style="padding: 96px 24px; background: var(--bg);">
+  <div style="max-width: 1080px; margin: 0 auto;">
+
+    <!-- Header -->
+    <div style="text-align: center; margin-bottom: 52px;">
+      <span class="section-eyebrow reveal" style="color: #2DD4BF;">Live Preview</span>
+      <h2 class="section-headline reveal" style="margin-top: 12px;">
+        This is what VSO sees<br>for every donor in your portfolio.
+      </h2>
+      <p class="section-sub reveal" style="max-width: 560px; margin: 16px auto 0;">
+        Select a donor profile below. VSO analyzes giving history, lapse risk, and relationship signals,
+        then produces a stewardship decision in seconds.
+      </p>
+    </div>
+
+    <!-- Donor selector pills -->
+    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px;">
+      <button class="demo-pill active" onclick="selectDonor(0, this)">Robert Chen, Class of 1987</button>
+      <button class="demo-pill" onclick="selectDonor(1, this)">Patricia Vance, Parent Donor</button>
+      <button class="demo-pill" onclick="selectDonor(2, this)">Marcus Webb, Young Alumni</button>
+    </div>
+
+    <!-- Demo card -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;">
+
+      <!-- Left: Donor profile -->
+      <div style="background: var(--bg-card, #1A1E2A); border: 1px solid rgba(62,207,142,0.15); border-radius: 14px; padding: 28px;">
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #2DD4BF; margin-bottom: 16px;">Donor Profile</div>
+        <div style="font-size: 22px; font-weight: 700; color: var(--text, #F0F2F5); margin-bottom: 4px;" id="demo-name">Robert Chen</div>
+        <div style="font-size: 13px; color: var(--text-muted, #7E8899); margin-bottom: 24px;" id="demo-meta">Class of 1987 &middot; Engineering &middot; Alumni</div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div style="background: rgba(255,255,255,0.04); border-radius: 8px; padding: 14px;">
+            <div style="font-size: 10.5px; color: var(--text-muted, #7E8899); margin-bottom: 4px;">Lifetime Giving</div>
+            <div style="font-size: 18px; font-weight: 700; color: var(--text, #F0F2F5);" id="demo-giving">$47,500</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.04); border-radius: 8px; padding: 14px;">
+            <div style="font-size: 10.5px; color: var(--text-muted, #7E8899); margin-bottom: 4px;">Last Gift</div>
+            <div style="font-size: 18px; font-weight: 700; color: var(--text, #F0F2F5);" id="demo-lastgift">14 months ago</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.04); border-radius: 8px; padding: 14px;">
+            <div style="font-size: 10.5px; color: var(--text-muted, #7E8899); margin-bottom: 4px;">Giving Streak</div>
+            <div style="font-size: 18px; font-weight: 700; color: var(--text, #F0F2F5);" id="demo-streak">6 years</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.04); border-radius: 8px; padding: 14px;">
+            <div style="font-size: 10.5px; color: var(--text-muted, #7E8899); margin-bottom: 4px;">Propensity Score</div>
+            <div style="font-size: 18px; font-weight: 700; color: #3ECF8E;" id="demo-score">84 / 100</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px; background: rgba(248,113,113,0.10); border: 1px solid rgba(248,113,113,0.25); border-radius: 8px; padding: 12px 14px; font-size: 12.5px;">
+          <span style="color: #F87171; font-weight: 700;">Lapse Risk:</span>
+          <span style="color: var(--text-soft, #C8CDD6); margin-left: 6px;" id="demo-lapse">HIGH — streak may break after 14-month silence</span>
+        </div>
+      </div>
+
+      <!-- Right: VSO decision output -->
+      <div style="background: var(--bg-card, #1A1E2A); border: 1px solid rgba(45,212,191,0.2); border-radius: 14px; padding: 28px; position: relative; min-height: 340px;">
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #2DD4BF; margin-bottom: 16px;">
+          VSO Decision
+          <span style="margin-left: 8px; font-size: 10px; font-weight: 600; color: #3ECF8E; background: rgba(62,207,142,0.12); padding: 2px 8px; border-radius: 20px; letter-spacing: 0;" id="demo-status">Analyzing...</span>
+        </div>
+
+        <div id="demo-output" style="opacity: 0; transition: opacity 0.4s ease;">
+
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px;">
+            <span style="font-size: 11.5px; font-weight: 600; background: rgba(62,207,142,0.12); color: #3ECF8E; padding: 4px 12px; border-radius: 20px;" id="demo-action">Impact Report</span>
+            <span style="font-size: 11.5px; font-weight: 600; background: rgba(45,212,191,0.12); color: #2DD4BF; padding: 4px 12px; border-radius: 20px;" id="demo-channel">Email</span>
+            <span style="font-size: 11.5px; font-weight: 600; background: rgba(255,255,255,0.07); color: var(--text-muted, #7E8899); padding: 4px 12px; border-radius: 20px;" id="demo-tone">Warm, personal</span>
+          </div>
+
+          <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted, #7E8899); margin-bottom: 8px;">VSO Rationale</div>
+          <p style="font-size: 13px; line-height: 1.7; color: var(--text-soft, #C8CDD6); margin-bottom: 18px;" id="demo-rationale">
+            Robert's 6-year giving streak is at risk of breaking. He last gave 14 months ago and has not responded to the standard renewal sequence. A personalized impact report on the Engineering Innovation Fund, which he has supported, is the highest-priority action to re-engage before the fiscal year closes.
+          </p>
+
+          <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted, #7E8899); margin-bottom: 8px;">Draft Message (Gift Officer Review Required)</div>
+          <div style="background: rgba(255,255,255,0.04); border-radius: 8px; padding: 14px; font-size: 12.5px; line-height: 1.7; color: var(--text-soft, #C8CDD6); font-style: italic;" id="demo-draft">
+            "Robert, I wanted to share something with you directly. Last year, your support of the Engineering Innovation Fund helped fund four senior capstone projects, including a water purification system now being piloted in rural Kenya. I know how much you care about real-world impact, and this one has your fingerprints on it. Would love to reconnect this spring and tell you more."
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap;">
+            <div style="font-size: 11.5px; padding: 6px 14px; border-radius: 6px; background: rgba(62,207,142,0.12); color: #3ECF8E; font-weight: 600;">Approve and send</div>
+            <div style="font-size: 11.5px; padding: 6px 14px; border-radius: 6px; background: rgba(255,255,255,0.06); color: var(--text-muted, #7E8899); font-weight: 500;">Edit draft</div>
+            <div style="font-size: 11.5px; padding: 6px 14px; border-radius: 6px; background: rgba(255,255,255,0.06); color: var(--text-muted, #7E8899); font-weight: 500;">Skip for now</div>
+          </div>
+
+        </div>
+
+        <!-- Loading spinner shown while "analyzing" -->
+        <div id="demo-loading" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px;">
+          <div style="width: 36px; height: 36px; border: 2.5px solid rgba(45,212,191,0.2); border-top-color: #2DD4BF; border-radius: 50%; animation: spin 0.8s linear infinite;"></div>
+          <div style="font-size: 12px; color: var(--text-muted, #7E8899);">VSO analyzing donor signals...</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Fine print -->
+    <p style="text-align: center; margin-top: 28px; font-size: 12px; color: var(--text-faint, #4A5568);">
+      Illustrative example. Donor data is fictional. All AI-drafted messages require gift officer review before delivery.
+    </p>
+
+  </div>
+</section>
+
+<style>
+.demo-pill {
+  font-size: 13px; font-weight: 600; padding: 8px 18px;
+  border-radius: 20px; border: 1px solid rgba(255,255,255,0.12);
+  background: transparent; color: var(--text-muted, #7E8899);
+  cursor: pointer; transition: all 0.2s;
+  font-family: inherit;
+}
+.demo-pill:hover  { border-color: #2DD4BF; color: #2DD4BF; }
+.demo-pill.active { border-color: #2DD4BF; color: #2DD4BF; background: rgba(45,212,191,0.10); }
+@media (max-width: 720px) {
+  .demo-section > div > div:last-of-type { grid-template-columns: 1fr !important; }
+}
+</style>
+
+<script>
+(function() {
+  const DONORS = [
+    {
+      name:     'Robert Chen',
+      meta:     'Class of 1987 &middot; Engineering &middot; Alumni',
+      giving:   '$47,500',
+      lastgift: '14 months ago',
+      streak:   '6 years',
+      score:    '84 / 100',
+      lapse:    'HIGH: streak may break after 14-month silence',
+      action:   'Impact Report',
+      channel:  'Email',
+      tone:     'Warm, personal',
+      rationale: "Robert's 6-year giving streak is at risk of breaking. He last gave 14 months ago and has not responded to the standard renewal sequence. A personalized impact report on the Engineering Innovation Fund, which he has supported, is the highest-priority action to re-engage before the fiscal year closes.",
+      draft: "\"Robert, I wanted to share something with you directly. Last year, your support of the Engineering Innovation Fund helped fund four senior capstone projects, including a water purification system now being piloted in rural Kenya. I know how much you care about real-world impact, and this one has your fingerprints on it. Would love to reconnect this spring and tell you more.\""
+    },
+    {
+      name:     'Patricia Vance',
+      meta:     'Parent Donor &middot; Business School &middot; 2 children graduated',
+      giving:   '$12,200',
+      lastgift: '4 months ago',
+      streak:   '3 years',
+      score:    '71 / 100',
+      lapse:    'LOW: active donor, anniversary recognition overdue',
+      action:   'Anniversary Recognition',
+      channel:  'Handwritten note',
+      tone:     'Grateful, celebratory',
+      rationale: "Patricia crossed her 3-year giving anniversary last month with no acknowledgment from the institution. She has two alumni children and consistently gives to the Business School Dean's Fund. A warm recognition touchpoint now deepens loyalty before the fall giving season.",
+      draft: "\"Patricia, as we close out the spring, we wanted to pause and say thank you. Three years of consecutive support to the Business School is something we genuinely treasure. Your investment is helping our next generation of business leaders and we hope you feel that connection as much as we do. With deep appreciation.\""
+    },
+    {
+      name:     'Marcus Webb',
+      meta:     'Class of 2019 &middot; Computer Science &middot; Young Alumni',
+      giving:   '$325',
+      lastgift: '22 months ago',
+      streak:   '1 year (broken)',
+      score:    '58 / 100',
+      lapse:    'MEDIUM: first-time donor, year-2 retention window closing',
+      action:   'Soft Re-engagement',
+      channel:  'Email',
+      tone:     'Peer, low-pressure',
+      rationale: "Marcus made his first-ever gift on Giving Day two years ago and has not given since. He is now in his second year post-graduation. Year 2 is the critical retention window for young alumni. A low-pressure reconnect focused on class community and impact, not a direct ask, has the best probability of re-engagement.",
+      draft: "\"Marcus, we know the first few years out of school go fast. Yours certainly have. We wanted to reach out, not to ask for anything, but to share that your Giving Day gift two years ago went toward funding the Hackathon Fellowship that your class helped launch. Twenty-three students participated last year. Thought you might want to know.\""
+    },
+  ];
+
+  let current = 0;
+
+  window.selectDonor = function(idx, btn) {
+    document.querySelectorAll('.demo-pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    current = idx;
+    renderDonor(idx);
+  };
+
+  function renderDonor(idx) {
+    const d = DONORS[idx];
+    document.getElementById('demo-name').textContent    = d.name;
+    document.getElementById('demo-meta').innerHTML      = d.meta;
+    document.getElementById('demo-giving').textContent  = d.giving;
+    document.getElementById('demo-lastgift').textContent= d.lastgift;
+    document.getElementById('demo-streak').textContent  = d.streak;
+    document.getElementById('demo-score').textContent   = d.score;
+    document.getElementById('demo-lapse').textContent   = d.lapse;
+
+    // Reset output
+    const output  = document.getElementById('demo-output');
+    const loading = document.getElementById('demo-loading');
+    const status  = document.getElementById('demo-status');
+    output.style.opacity  = '0';
+    loading.style.display = 'flex';
+    status.textContent    = 'Analyzing...';
+    status.style.color    = '#3ECF8E';
+
+    // Simulate processing delay
+    setTimeout(() => {
+      document.getElementById('demo-action').textContent   = d.action;
+      document.getElementById('demo-channel').textContent  = d.channel;
+      document.getElementById('demo-tone').textContent     = d.tone;
+      document.getElementById('demo-rationale').textContent= d.rationale;
+      document.getElementById('demo-draft').textContent    = d.draft;
+
+      loading.style.display = 'none';
+      output.style.opacity  = '1';
+      status.textContent    = 'Decision ready';
+    }, 900 + Math.random() * 400);
+  }
+
+  // Auto-run on first load
+  renderDonor(0);
+})();
+</script>
+
+
+<div class="divider"></div>
+
+
+<!-- ═══════════════════════════════════════
      CTA
      ═══════════════════════════════════════ -->
 <section class="cta-section" id="access">
