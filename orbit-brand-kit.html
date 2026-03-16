@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orbit — Brand Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* ── Core Backgrounds ── */
+  --bg:           #0F1117;
+  --bg-raised:    #141720;
+  --bg-card:      #1A1E2A;
+  --bg-elevated:  #222638;
+  --bg-overlay:   #2C323F;
+
+  /* ── Text ── */
+  --text:         #F0F2F5;
+  --text-soft:    #C8CDD6;
+  --text-muted:   #7E8899;
+  --text-faint:   #4A5568;
+
+  /* ── Green — Primary ── */
+  --green:        #3ECF8E;
+  --green-hover:  #34B97C;
+  --green-dim:    rgba(62,207,142,0.12);
+  --green-pale:   rgba(62,207,142,0.06);
+  --green-glow:   rgba(62,207,142,0.25);
+
+  /* ── Purple — Secondary ── */
+  --purple:       #A78BFA;
+  --purple-deep:  #7C5CEB;
+  --purple-dim:   rgba(167,139,250,0.12);
+
+  /* ── Agent Colors ── */
+  --teal:         #2DD4BF;
+  --teal-dim:     rgba(45,212,191,0.1);
+  --amber:        #F59E0B;
+  --amber-dim:    rgba(245,158,11,0.1);
+  --rose:         #F87171;
+  --rose-dim:     rgba(248,113,113,0.1);
+
+  /* ── Structure ── */
+  --border:       #252B3B;
+  --border-bright:#2E3550;
+  --radius-sm:    6px;
+  --radius-md:    10px;
+  --radius-lg:    14px;
+  --radius-xl:    20px;
+  --transition:   all 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:14px; scroll-behavior:smooth; }
+body {
+  font-family:'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+a { text-decoration:none; color:inherit; }
+
+/* ── LAYOUT ── */
+.page { display:flex; min-height:100vh; }
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: 220px;
+  min-width: 220px;
+  background: var(--bg-raised);
+  border-right: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 0 24px;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+
+.logo-mark { width:28px; height:28px; flex-shrink:0; }
+.logo-mark svg { width:100%; height:100%; }
+.logo-ring { animation: spin 12s linear infinite; transform-origin:50% 50%; }
+.logo-ring-r { animation: spin-r 8s linear infinite; transform-origin:50% 50%; }
+@keyframes spin   { to { transform: rotate(360deg); } }
+@keyframes spin-r { to { transform: rotate(-360deg); } }
+
+.logo-word { font-size:18px; font-weight:700; letter-spacing:-0.5px; }
+.logo-word em { color:var(--green); font-style:normal; }
+
+.sidebar-label {
+  font-size:10px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--text-faint);
+  padding: 10px 20px 4px;
+}
+
+.sidebar-link {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding: 7px 20px;
+  font-size:13px;
+  color:var(--text-muted);
+  transition:var(--transition);
+  cursor:pointer;
+  border-left: 2px solid transparent;
+}
+
+.sidebar-link:hover { color:var(--text); background:var(--bg-elevated); }
+.sidebar-link.active { color:var(--green); border-left-color:var(--green); background:var(--green-pale); }
+
+.sidebar-dot {
+  width:7px; height:7px; border-radius:50%; flex-shrink:0;
+}
+
+/* ── MAIN ── */
+.main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 56px 64px 100px;
+  max-width: 960px;
+}
+
+/* ── SECTIONS ── */
+.section { margin-bottom: 80px; scroll-margin-top: 40px; }
+
+.section-tag {
+  display:inline-block;
+  font-size:10px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1.2px;
+  color:var(--green);
+  margin-bottom:10px;
+}
+
+.section-title {
+  font-size:32px;
+  font-weight:800;
+  letter-spacing:-1px;
+  color:var(--text);
+  margin-bottom:8px;
+  line-height:1.15;
+}
+
+.section-sub {
+  font-size:15px;
+  color:var(--text-muted);
+  line-height:1.65;
+  max-width:580px;
+  margin-bottom:40px;
+}
+
+.divider {
+  width:100%;
+  height:1px;
+  background:linear-gradient(to right, var(--border), transparent);
+  margin:48px 0;
+}
+
+/* ── COVER ── */
+.cover {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 64px;
+  margin-bottom: 80px;
+  position: relative;
+  overflow: hidden;
+  display:flex;
+  align-items:center;
+  gap:48px;
+}
+
+.cover::before {
+  content:'';
+  position:absolute;
+  top:-60px; right:-60px;
+  width:300px; height:300px;
+  background:radial-gradient(circle, rgba(62,207,142,0.08), transparent 70%);
+  pointer-events:none;
+}
+
+.cover::after {
+  content:'';
+  position:absolute;
+  bottom:-60px; left:30%;
+  width:250px; height:250px;
+  background:radial-gradient(circle, rgba(167,139,250,0.06), transparent 70%);
+  pointer-events:none;
+}
+
+.cover-logo {
+  width:100px; height:100px; flex-shrink:0;
+}
+
+.cover-logo svg { width:100%; height:100%; }
+
+.cover-text {}
+.cover-name {
+  font-size:52px;
+  font-weight:800;
+  letter-spacing:-2px;
+  line-height:1;
+  margin-bottom:8px;
+}
+.cover-name em { color:var(--green); font-style:normal; }
+.cover-tagline {
+  font-size:16px;
+  color:var(--text-muted);
+  font-weight:400;
+  margin-bottom:20px;
+}
+.cover-version {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--green-dim);
+  border:1px solid rgba(62,207,142,0.2);
+  border-radius:100px;
+  padding:4px 12px;
+  font-size:11px;
+  font-weight:600;
+  color:var(--green);
+  letter-spacing:0.5px;
+}
+
+/* ── COLOR SWATCHES ── */
+.swatch-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(160px, 1fr));
+  gap:12px;
+  margin-bottom:24px;
+}
+
+.swatch {
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  border:1px solid var(--border);
+  cursor:pointer;
+  transition:var(--transition);
+}
+
+.swatch:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.4); }
+
+.swatch-color {
+  height:80px;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  padding:10px 12px;
+}
+
+.swatch-copy {
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.5px;
+  opacity:0;
+  transition:var(--transition);
+  background:rgba(0,0,0,0.5);
+  border-radius:4px;
+  padding:2px 6px;
+  color:#fff;
+}
+
+.swatch:hover .swatch-copy { opacity:1; }
+
+.swatch-info {
+  background:var(--bg-card);
+  padding:10px 12px;
+}
+
+.swatch-name {
+  font-size:12px;
+  font-weight:600;
+  color:var(--text);
+  margin-bottom:2px;
+}
+
+.swatch-hex {
+  font-size:11px;
+  color:var(--text-muted);
+  font-family:monospace;
+  margin-bottom:2px;
+}
+
+.swatch-role {
+  font-size:10.5px;
+  color:var(--text-faint);
+  line-height:1.4;
+}
+
+/* ── TYPOGRAPHY ── */
+.type-specimen {
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  margin-bottom:12px;
+}
+
+.type-row {
+  display:flex;
+  align-items:baseline;
+  gap:24px;
+  padding:20px 24px;
+  border-bottom:1px solid var(--border);
+}
+
+.type-row:last-child { border-bottom:none; }
+
+.type-meta {
+  width:120px;
+  flex-shrink:0;
+}
+
+.type-label {
+  font-size:11px;
+  font-weight:700;
+  color:var(--text-faint);
+  text-transform:uppercase;
+  letter-spacing:0.8px;
+  display:block;
+  margin-bottom:2px;
+}
+
+.type-spec {
+  font-size:10.5px;
+  color:var(--text-faint);
+  font-family:monospace;
+}
+
+.type-sample { flex:1; color:var(--text); }
+
+/* ── LOGO VARIANTS ── */
+.logo-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:32px;
+}
+
+.logo-variant {
+  border-radius:var(--radius-lg);
+  border:1px solid var(--border);
+  padding:32px 24px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+  transition:var(--transition);
+}
+
+.logo-variant:hover { border-color:var(--border-bright); }
+
+.logo-variant-label {
+  font-size:11px;
+  font-weight:600;
+  color:var(--text-faint);
+  text-transform:uppercase;
+  letter-spacing:0.8px;
+  text-align:center;
+}
+
+.lv-dark  { background:var(--bg-card); }
+.lv-green { background:var(--green); }
+.lv-white { background:#F0F2F5; }
+
+/* ── COMPONENT SHOWCASE ── */
+.component-row {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.component-label {
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.8px;
+  color:var(--text-faint);
+  width:100%;
+  margin-bottom:4px;
+}
+
+/* Buttons */
+.btn {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:8px 18px; border-radius:var(--radius-md);
+  font-size:13.5px; font-weight:600; cursor:pointer;
+  border:none; transition:var(--transition);
+  font-family:'DM Sans',sans-serif; white-space:nowrap;
+}
+.btn-primary { background:var(--green); color:#0A1A12; }
+.btn-primary:hover { background:var(--green-hover); transform:translateY(-1px); }
+.btn-secondary { background:var(--purple-deep); color:#fff; }
+.btn-secondary:hover { background:var(--purple); transform:translateY(-1px); }
+.btn-ghost { background:transparent; color:var(--text-soft); border:1px solid var(--border-bright); }
+.btn-ghost:hover { background:var(--bg-elevated); }
+.btn-sm { padding:5px 12px; font-size:12px; }
+.btn-lg { padding:12px 28px; font-size:15px; }
+
+/* Badges */
+.badge {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:4px 10px; border-radius:100px;
+  font-size:11px; font-weight:700;
+  letter-spacing:0.4px; text-transform:uppercase;
+}
+.badge-green  { background:var(--green-dim);  color:var(--green);  border:1px solid rgba(62,207,142,0.2); }
+.badge-purple { background:var(--purple-dim); color:var(--purple); border:1px solid rgba(167,139,250,0.2); }
+.badge-teal   { background:var(--teal-dim);   color:var(--teal);   border:1px solid rgba(45,212,191,0.2); }
+.badge-amber  { background:var(--amber-dim);  color:var(--amber);  border:1px solid rgba(245,158,11,0.2); }
+.badge-rose   { background:var(--rose-dim);   color:var(--rose);   border:1px solid rgba(248,113,113,0.2); }
+
+.badge-dot {
+  width:6px; height:6px; border-radius:50%; background:currentColor;
+}
+
+/* Tags */
+.tag {
+  display:inline-flex; align-items:center;
+  padding:3px 10px; border-radius:4px;
+  font-size:11.5px; font-weight:600;
+}
+.tag-green  { background:var(--green-dim);  color:var(--green); }
+.tag-purple { background:var(--purple-dim); color:var(--purple); }
+.tag-muted  { background:var(--bg-elevated); color:var(--text-muted); }
+
+/* Cards */
+.card-demo {
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:20px;
+  transition:var(--transition);
+  max-width:280px;
+}
+.card-demo:hover { box-shadow:0 8px 32px rgba(0,0,0,0.4); border-color:var(--border-bright); }
+.card-demo-title { font-size:14px; font-weight:700; color:var(--text); margin-bottom:6px; }
+.card-demo-sub { font-size:12.5px; color:var(--text-muted); line-height:1.55; }
+
+/* Inputs */
+.input-demo {
+  padding:9px 13px;
+  border:1.5px solid var(--border-bright);
+  border-radius:var(--radius-md);
+  background:var(--bg-elevated);
+  color:var(--text);
+  font-size:13.5px;
+  font-family:'DM Sans',sans-serif;
+  outline:none;
+  transition:var(--transition);
+  width:220px;
+}
+.input-demo:focus { border-color:var(--green); box-shadow:0 0 0 3px rgba(62,207,142,0.12); }
+.input-demo::placeholder { color:var(--text-faint); }
+
+/* ── SPACING ── */
+.spacing-grid {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.spacing-row {
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.spacing-block {
+  background:var(--green-dim);
+  border:1px solid rgba(62,207,142,0.25);
+  border-radius:4px;
+  height:20px;
+  flex-shrink:0;
+}
+
+.spacing-meta {
+  display:flex;
+  gap:16px;
+}
+
+.spacing-token { font-size:12px; font-family:monospace; color:var(--green); }
+.spacing-px    { font-size:12px; color:var(--text-muted); }
+.spacing-use   { font-size:12px; color:var(--text-faint); }
+
+/* ── RADIUS ── */
+.radius-grid {
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.radius-demo {
+  width:80px; height:80px;
+  background:var(--bg-elevated);
+  border:1.5px solid var(--border-bright);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+}
+
+.radius-token { font-size:10px; font-family:monospace; color:var(--green); }
+.radius-px    { font-size:10px; color:var(--text-muted); }
+
+/* ── AGENT IDENTITIES ── */
+.agent-grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.agent-card {
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+}
+
+.agent-card::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:2px;
+}
+
+.agent-card.veo::before  { background:var(--green); }
+.agent-card.vso::before  { background:var(--teal); }
+.agent-card.vpgo::before { background:var(--amber); }
+.agent-card.vco::before  { background:var(--purple); }
+
+.agent-abbr {
+  font-size:11px; font-weight:700;
+  text-transform:uppercase; letter-spacing:1px;
+  margin-bottom:6px;
+}
+
+.agent-abbr.veo  { color:var(--green); }
+.agent-abbr.vso  { color:var(--teal); }
+.agent-abbr.vpgo { color:var(--amber); }
+.agent-abbr.vco  { color:var(--purple); }
+
+.agent-name {
+  font-size:15px; font-weight:700;
+  color:var(--text); margin-bottom:4px;
+  letter-spacing:-0.3px;
+}
+
+.agent-color-row {
+  display:flex; align-items:center; gap:8px; margin-top:12px;
+}
+
+.agent-color-swatch {
+  width:28px; height:28px; border-radius:6px;
+}
+
+.agent-color-hex {
+  font-size:11px; font-family:monospace; color:var(--text-muted);
+}
+
+/* ── VOICE & TONE ── */
+.voice-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.voice-card {
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:20px;
+}
+
+.voice-card.do   { border-top:2px solid var(--green); }
+.voice-card.dont { border-top:2px solid var(--rose); }
+
+.voice-card-label {
+  font-size:11px; font-weight:700;
+  text-transform:uppercase; letter-spacing:0.8px;
+  margin-bottom:14px;
+}
+
+.voice-card.do   .voice-card-label { color:var(--green); }
+.voice-card.dont .voice-card-label { color:var(--rose); }
+
+.voice-item {
+  display:flex; gap:10px;
+  font-size:13px; color:var(--text-soft);
+  line-height:1.5; margin-bottom:10px;
+}
+
+.voice-item:last-child { margin-bottom:0; }
+
+.voice-icon { flex-shrink:0; font-size:13px; margin-top:1px; }
+
+/* ── COPY TOAST ── */
+.toast {
+  position:fixed;
+  bottom:28px; right:28px;
+  background:var(--green);
+  color:#0A1A12;
+  font-size:13px;
+  font-weight:700;
+  padding:10px 18px;
+  border-radius:8px;
+  opacity:0;
+  transform:translateY(8px);
+  transition:all 0.25s ease;
+  pointer-events:none;
+  z-index:999;
+}
+.toast.show { opacity:1; transform:translateY(0); }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width:6px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--border-bright); border-radius:3px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width:800px) {
+  .sidebar { display:none; }
+  .main { padding:32px 24px 80px; }
+  .logo-grid { grid-template-columns:1fr; }
+  .agent-grid { grid-template-columns:1fr; }
+  .voice-grid { grid-template-columns:1fr; }
+  .cover { flex-direction:column; padding:40px 32px; }
+}
+
+/* ── PDF DOWNLOAD BUTTON ── */
+.pdf-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  background: var(--green);
+  color: #0A1A12;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(62,207,142,0.3);
+  transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+  z-index: 200;
+}
+.pdf-btn:hover {
+  background: var(--green-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(62,207,142,0.4);
+}
+
+/* ── PRINT / PDF STYLES ── */
+@media print {
+  @page {
+    size: letter;
+    margin: 0.75in 0.75in 0.75in 0.75in;
+  }
+
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+  /* Reset layout for print */
+  body { background: #0F1117 !important; }
+  .page { display: block !important; }
+  .sidebar { display: none !important; }
+  .pdf-btn { display: none !important; }
+  .toast { display: none !important; }
+
+  .main {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Section breaks */
+  .section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 48px !important;
+  }
+
+  .divider { margin: 32px 0 !important; }
+
+  /* Cover page */
+  .cover {
+    page-break-after: always;
+    break-after: always;
+    min-height: 400px;
+    display: flex !important;
+    align-items: center !important;
+    padding: 48px !important;
+  }
+
+  /* Grids */
+  .swatch-grid { grid-template-columns: repeat(3, 1fr) !important; }
+  .logo-grid   { grid-template-columns: repeat(3, 1fr) !important; }
+  .agent-grid  { grid-template-columns: repeat(2, 1fr) !important; }
+  .voice-grid  { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Prevent interactive hover states from showing */
+  .swatch:hover,
+  .card-demo:hover,
+  .pillar:hover { transform: none !important; box-shadow: none !important; }
+
+  /* Ensure section tags and headlines print clearly */
+  .section-tag   { color: #3ECF8E !important; }
+  .section-title { color: #F0F2F5 !important; }
+  .section-sub   { color: #7E8899 !important; }
+
+  /* Page break hints */
+  #colors    { page-break-before: always; break-before: always; }
+  #typography { page-break-before: always; break-before: always; }
+  #components { page-break-before: always; break-before: always; }
+  #spacing   { page-break-before: always; break-before: always; }
+  #agents    { page-break-before: always; break-before: always; }
+  #voice     { page-break-before: always; break-before: always; }
+
+  /* Print header on each page */
+  .print-header {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #252B3B;
+    margin-bottom: 24px;
+  }
+}
+
+/* Hide print header on screen */
+.print-header { display: none; }
+</style>
+</head>
+<body>
+
+<div id="toast" class="toast">Copied!</div>
+
+<!-- PDF Download Button -->
+<button class="pdf-btn" onclick="downloadPDF()">
+  <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+    <path d="M7.5 1v9M4 7l3.5 3.5L11 7M2 13h11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  Download PDF
+</button>
+
+<div class="page">
+
+<!-- ════════════════════════
+     SIDEBAR
+════════════════════════ -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="5" fill="#F0F2F5"/>
+        <circle cx="20" cy="20" r="14" stroke="#3ECF8E" stroke-width="1.5" stroke-dasharray="5 2.5" fill="none" class="logo-ring"/>
+        <circle cx="20" cy="20" r="9"  stroke="#A78BFA" stroke-width="1"   stroke-dasharray="3 3"   fill="none" class="logo-ring-r"/>
+        <circle cx="34" cy="20" r="3.5" fill="#A78BFA"/>
+        <circle cx="20" cy="6"  r="2"   fill="#C8CDD6" opacity=".6"/>
+      </svg>
+    </div>
+    <span class="logo-word">Orbit<em>.</em></span>
+  </div>
+
+  <span class="sidebar-label">Brand Kit</span>
+  <a class="sidebar-link active" href="#logo" onclick="setActive(this)"><div class="sidebar-dot" style="background:#3ECF8E"></div>Logo</a>
+  <a class="sidebar-link" href="#colors" onclick="setActive(this)"><div class="sidebar-dot" style="background:#A78BFA"></div>Colors</a>
+  <a class="sidebar-link" href="#typography" onclick="setActive(this)"><div class="sidebar-dot" style="background:#2DD4BF"></div>Typography</a>
+  <a class="sidebar-link" href="#components" onclick="setActive(this)"><div class="sidebar-dot" style="background:#F59E0B"></div>Components</a>
+  <a class="sidebar-link" href="#spacing" onclick="setActive(this)"><div class="sidebar-dot" style="background:#7E8899"></div>Spacing & Radius</a>
+  <a class="sidebar-link" href="#agents" onclick="setActive(this)"><div class="sidebar-dot" style="background:#3ECF8E"></div>Agent Identities</a>
+  <a class="sidebar-link" href="#voice" onclick="setActive(this)"><div class="sidebar-dot" style="background:#A78BFA"></div>Voice & Tone</a>
+
+  <div style="flex:1;"></div>
+  <div style="padding:16px 20px;border-top:1px solid var(--border);">
+    <div style="font-size:11px;color:var(--text-faint);">Orbit Brand Kit</div>
+    <div style="font-size:10.5px;color:var(--text-faint);margin-top:2px;">Version 1.0 · 2026</div>
+  </div>
+</nav>
+
+<!-- ════════════════════════
+     MAIN
+════════════════════════ -->
+<main class="main">
+
+  <!-- Print header (visible only when printing) -->
+  <div class="print-header">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <svg width="20" height="20" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="5" fill="#F0F2F5"/>
+        <circle cx="20" cy="20" r="14" stroke="#3ECF8E" stroke-width="1.5" stroke-dasharray="5 2.5" fill="none"/>
+        <circle cx="34" cy="20" r="3" fill="#A78BFA"/>
+      </svg>
+      <span style="font-size:14px;font-weight:700;color:#F0F2F5;">Orbit<em style="color:#3ECF8E;font-style:normal;">.</em> Brand Kit</span>
+    </div>
+    <span style="font-size:11px;color:#4A5568;">Version 1.0 · 2026 · donororbit.com</span>
+  </div>
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-logo">
+      <svg viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="12" fill="#F0F2F5"/>
+        <circle cx="50" cy="50" r="35" stroke="#3ECF8E" stroke-width="1.5" stroke-dasharray="8 4" fill="none" style="animation:spin 12s linear infinite;transform-origin:50px 50px;"/>
+        <circle cx="50" cy="50" r="22" stroke="#A78BFA" stroke-width="1"   stroke-dasharray="5 4" fill="none" style="animation:spin-r 8s linear infinite;transform-origin:50px 50px;"/>
+        <circle cx="85" cy="50" r="7"  fill="#A78BFA"/>
+        <circle cx="50" cy="15" r="5"  fill="#C8CDD6" opacity=".6"/>
+        <circle cx="50" cy="50" r="40" stroke="#252B3B" stroke-width="0.5" fill="none"/>
+      </svg>
+    </div>
+    <div class="cover-text">
+      <div class="cover-name">Orbit<em>.</em></div>
+      <div class="cover-tagline">Autonomous Advancement Intelligence</div>
+      <div class="cover-version">
+        <svg width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3" fill="#3ECF8E"/></svg>
+        Brand Kit — Version 1.0
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════
+       LOGO
+  ══════════════════ -->
+  <div class="section" id="logo">
+    <span class="section-tag">01 — Logo</span>
+    <h2 class="section-title">Logo System</h2>
+    <p class="section-sub">The Orbit logo consists of two elements: the orbital mark and the wordmark. They should always appear together. Never distort, recolor, or separate the elements.</p>
+
+    <div class="logo-grid">
+
+      <!-- Dark bg -->
+      <div class="logo-variant lv-dark">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="5" fill="#F0F2F5"/>
+            <circle cx="20" cy="20" r="14" stroke="#3ECF8E" stroke-width="1.5" stroke-dasharray="5 2.5" fill="none" style="animation:spin 12s linear infinite;transform-origin:20px 20px;"/>
+            <circle cx="20" cy="20" r="9"  stroke="#A78BFA" stroke-width="1"   stroke-dasharray="3 3"   fill="none" style="animation:spin-r 8s linear infinite;transform-origin:20px 20px;"/>
+            <circle cx="34" cy="20" r="3.5" fill="#A78BFA"/>
+            <circle cx="20" cy="6"  r="2"   fill="#C8CDD6" opacity=".6"/>
+          </svg>
+          <span style="font-size:26px;font-weight:800;letter-spacing:-0.8px;color:#F0F2F5;">Orbit<em style="color:#3ECF8E;font-style:normal;">.</em></span>
+        </div>
+        <div class="logo-variant-label">Primary — Dark Background</div>
+      </div>
+
+      <!-- Green bg -->
+      <div class="logo-variant lv-green">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="5" fill="#0A1A12"/>
+            <circle cx="20" cy="20" r="14" stroke="#0A1A12" stroke-width="1.5" stroke-dasharray="5 2.5" fill="none" style="animation:spin 12s linear infinite;transform-origin:20px 20px;"/>
+            <circle cx="20" cy="20" r="9"  stroke="rgba(10,26,18,0.5)" stroke-width="1" stroke-dasharray="3 3" fill="none" style="animation:spin-r 8s linear infinite;transform-origin:20px 20px;"/>
+            <circle cx="34" cy="20" r="3.5" fill="#0A1A12" opacity=".6"/>
+            <circle cx="20" cy="6"  r="2"   fill="#0A1A12" opacity=".4"/>
+          </svg>
+          <span style="font-size:26px;font-weight:800;letter-spacing:-0.8px;color:#0A1A12;">Orbit<em style="color:#0A1A12;font-style:normal;opacity:.6;">.</em></span>
+        </div>
+        <div class="logo-variant-label" style="color:rgba(10,26,18,0.6);">On Green — Dark Version</div>
+      </div>
+
+      <!-- White bg -->
+      <div class="logo-variant lv-white">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="5" fill="#141720"/>
+            <circle cx="20" cy="20" r="14" stroke="#3ECF8E" stroke-width="1.5" stroke-dasharray="5 2.5" fill="none" style="animation:spin 12s linear infinite;transform-origin:20px 20px;"/>
+            <circle cx="20" cy="20" r="9"  stroke="#A78BFA" stroke-width="1"   stroke-dasharray="3 3" fill="none" style="animation:spin-r 8s linear infinite;transform-origin:20px 20px;"/>
+            <circle cx="34" cy="20" r="3.5" fill="#A78BFA"/>
+            <circle cx="20" cy="6"  r="2"   fill="#4A5568" opacity=".6"/>
+          </svg>
+          <span style="font-size:26px;font-weight:800;letter-spacing:-0.8px;color:#141720;">Orbit<em style="color:#3ECF8E;font-style:normal;">.</em></span>
+        </div>
+        <div class="logo-variant-label" style="color:#7E8899;">On White — Light Background</div>
+      </div>
+
+    </div>
+
+    <!-- Logo rules -->
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-faint);margin-bottom:16px;">Logo Rules</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--green);margin-bottom:8px;">✓ Always</div>
+          <div style="font-size:13px;color:var(--text-muted);line-height:1.7;">Use the full wordmark + mark together<br>Maintain clear space equal to the mark height<br>Use approved color variants only<br>Use SVG or high-res PNG for print</div>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--rose);margin-bottom:8px;">✕ Never</div>
+          <div style="font-size:13px;color:var(--text-muted);line-height:1.7;">Stretch or distort the mark<br>Change logo colors outside approved variants<br>Add drop shadows or effects<br>Use below 24px height</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+
+  <!-- ══════════════════
+       COLORS
+  ══════════════════ -->
+  <div class="section" id="colors">
+    <span class="section-tag">02 — Colors</span>
+    <h2 class="section-title">Color Palette</h2>
+    <p class="section-sub">Orbit uses a dark-first color system anchored by a primary green and a secondary purple. Click any swatch to copy the hex value.</p>
+
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-faint);margin-bottom:12px;">Backgrounds</div>
+    <div class="swatch-grid" style="margin-bottom:32px;">
+      <div class="swatch" onclick="copyColor('#0F1117')">
+        <div class="swatch-color" style="background:#0F1117;"><span class="swatch-copy">Copy</span></div>
+        <div class="swatch-info"><div class="swatch-name">BG Base</div><div class="swatch-hex">#0F1117</div><div class="swatch-role">Page / deepest background</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#141720')">
+        <div class="swatch-color" style="background:#141720;border-bottom:1px solid #252B3B;"><span class="swatch-copy">Copy</span></div>
+        <div class="swatch-info"><div class="swatch-name">BG Raised</div><div class="swatch-hex">#141720</div><div class="swatch-role">Sidebar, topbar, sections</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#1A1E2A')">
+        <div class="swatch-color" style="background:#1A1E2A;border-bottom:1px solid #252B3B;"><span class="swatch-copy">Copy</span></div>
+        <div class="swatch-info"><div class="swatch-name">BG Card</div><div class="swatch-hex">#1A1E2A</div><div class="swatch-role">Cards, panels</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#222638')">
+        <div class="swatch-color" style="background:#222638;border-bottom:1px solid #252B3B;"><span class="swatch-copy">Copy</span></div>
+        <div class="swatch-info"><div class="swatch-name">BG Elevated</div><div class="swatch-hex">#222638</div><div class="swatch-role">Hover states, inputs</div></div>
+      </div>
+    </div>
+
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-faint);margin-bottom:12px;">Primary — Green</div>
+    <div class="swatch-grid" style="margin-bottom:32px;">
+      <div class="swatch" onclick="copyColor('#3ECF8E')">
+        <div class="swatch-color" style="background:#3ECF8E;"><span class="swatch-copy" style="color:#0A1A12;">Copy</span></div>
+        <div class="swatch-info"><div class="swatch-name">Green</div><div class="swatch-hex">#3ECF8E</div><div class="swatch-role">Primary CTAs, active states, key highlights</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#34B97C')">
+        <div class="swatch-color" style="background:#34B97C;"><span class="swatch-copy" style="color:#0A1A12;">Copy</span></div>
+        <div class="swatch-info"><div class="swatch-name">Green Hover</div><div class="swatch-hex">#34B97C</div><div class="swatch-role">Button hover, interactive states</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('rgba(62,207,142,0.12)')">
+        <div class="swatch-color" style="background:rgba(62,207,142,0.12);border-bottom:1px solid #252B3B;"><span class="swatch-copy">Copy</span></div>
+        <div class="swatch-info"><div class="swatch-name">Green Dim</div><div class="swatch-hex">rgba(62,207,142,0.12)</div><div class="swatch-role">Badge backgrounds, subtle fills</div></div>
+      </div>
+    </div>
+
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-faint);margin-bottom:12px;">Secondary — Purple</div>
+    <div class="swatch-grid" style="margin-bottom:32px;">
+      <div class="swatch" onclick="copyColor('#A78BFA')">
+        <div class="swatch-color" style="background:#A78BFA;"><span class="swatch-copy" style="color:#1a0060;">Copy</span></div>
+        <div class="swatch-info"><div class="swatch-name">Purple</div><div class="swatch-hex">#A78BFA</div><div class="swatch-role">Secondary accents, VCO identity</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#7C5CEB')">
+        <div class="swatch-color" style="background:#7C5CEB;"><span class="swatch-copy">Copy</span></div>
+        <div class="swatch-info"><div class="swatch-name">Purple Deep</div><div class="swatch-hex">#7C5CEB</div><div class="swatch-role">Secondary CTAs, filled buttons</div></div>
+      </div>
+    </div>
+
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-faint);margin-bottom:12px;">Agent & Supporting Colors</div>
+    <div class="swatch-grid" style="margin-bottom:32px;">
+      <div class="swatch" onclick="copyColor('#2DD4BF')">
+        <div class="swatch-color" style="background:#2DD4BF;"><span class="swatch-copy" style="color:#023430;">Copy</span></div>
+        <div class="swatch-info"><div class="swatch-name">Teal</div><div class="swatch-hex">#2DD4BF</div><div class="swatch-role">VSO — Stewardship</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#F59E0B')">
+        <div class="swatch-color" style="background:#F59E0B;"><span class="swatch-copy" style="color:#431a00;">Copy</span></div>
+        <div class="swatch-info"><div class="swatch-name">Amber</div><div class="swatch-hex">#F59E0B</div><div class="swatch-role">VPGO — Planned Giving</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#F87171')">
+        <div class="swatch-color" style="background:#F87171;"><span class="swatch-copy" style="color:#450a0a;">Copy</span></div>
+        <div class="swatch-info"><div class="swatch-name">Rose</div><div class="swatch-hex">#F87171</div><div class="swatch-role">Alerts, errors, urgent states</div></div>
+      </div>
+    </div>
+
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-faint);margin-bottom:12px;">Text</div>
+    <div class="swatch-grid">
+      <div class="swatch" onclick="copyColor('#F0F2F5')">
+        <div class="swatch-color" style="background:#F0F2F5;"><span class="swatch-copy" style="color:#141720;">Copy</span></div>
+        <div class="swatch-info"><div class="swatch-name">Text Primary</div><div class="swatch-hex">#F0F2F5</div><div class="swatch-role">Headlines, body copy</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#C8CDD6')">
+        <div class="swatch-color" style="background:#C8CDD6;"><span class="swatch-copy" style="color:#141720;">Copy</span></div>
+        <div class="swatch-info"><div class="swatch-name">Text Soft</div><div class="swatch-hex">#C8CDD6</div><div class="swatch-role">Secondary body text</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#7E8899')">
+        <div class="swatch-color" style="background:#7E8899;"><span class="swatch-copy" style="color:#141720;">Copy</span></div>
+        <div class="swatch-info"><div class="swatch-name">Text Muted</div><div class="swatch-hex">#7E8899</div><div class="swatch-role">Labels, captions, metadata</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#4A5568')">
+        <div class="swatch-color" style="background:#4A5568;"><span class="swatch-copy">Copy</span></div>
+        <div class="swatch-info"><div class="swatch-name">Text Faint</div><div class="swatch-hex">#4A5568</div><div class="swatch-role">Disabled, placeholder text</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+
+  <!-- ══════════════════
+       TYPOGRAPHY
+  ══════════════════ -->
+  <div class="section" id="typography">
+    <span class="section-tag">03 — Typography</span>
+    <h2 class="section-title">Typography</h2>
+    <p class="section-sub">Orbit uses a single typeface — DM Sans — across all weights. The system relies on weight and size contrast rather than multiple fonts to create hierarchy.</p>
+
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:20px;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-faint);margin-bottom:16px;">Typeface</div>
+      <div style="display:flex;align-items:center;gap:24px;">
+        <div style="font-size:48px;font-weight:800;color:var(--text);letter-spacing:-2px;line-height:1;">Aa</div>
+        <div>
+          <div style="font-size:18px;font-weight:700;color:var(--text);margin-bottom:4px;">DM Sans</div>
+          <div style="font-size:13px;color:var(--text-muted);">Variable — 300 to 800 weight</div>
+          <a href="https://fonts.google.com/specimen/DM+Sans" target="_blank" style="font-size:12px;color:var(--green);margin-top:4px;display:inline-block;">Google Fonts →</a>
+        </div>
+      </div>
+      <div style="margin-top:20px;font-size:18px;color:var(--text-soft);font-weight:300;line-height:1.5;letter-spacing:0.2px;">
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+        abcdefghijklmnopqrstuvwxyz<br>
+        0123456789 &amp; ! ? . , : ; @ # $ %
+      </div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-row">
+        <div class="type-meta"><span class="type-label">Display</span><span class="type-spec">78px / 800</span></div>
+        <div class="type-sample" style="font-size:48px;font-weight:800;letter-spacing:-2px;line-height:1;">Orbit.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-label">H1</span><span class="type-spec">42px / 800</span></div>
+        <div class="type-sample" style="font-size:36px;font-weight:800;letter-spacing:-1.2px;line-height:1.1;">Advancement Intelligence</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-label">H2</span><span class="type-spec">28px / 700</span></div>
+        <div class="type-sample" style="font-size:24px;font-weight:700;letter-spacing:-0.6px;">Four Virtual Officers</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-label">H3</span><span class="type-spec">20px / 700</span></div>
+        <div class="type-sample" style="font-size:18px;font-weight:700;letter-spacing:-0.3px;">Virtual Engagement Officer</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-label">Body Large</span><span class="type-spec">17px / 400</span></div>
+        <div class="type-sample" style="font-size:15px;font-weight:400;color:var(--text-soft);line-height:1.65;">Orbit is the AI-native platform built for university advancement. Four autonomous Virtual Officers, one predictive intelligence layer.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-label">Body</span><span class="type-spec">14px / 400</span></div>
+        <div class="type-sample" style="font-size:13px;font-weight:400;color:var(--text-muted);line-height:1.65;">VEO continuously monitors your alumni and donor universe, surfaces engagement opportunities, and drafts personalized outreach for gift officer review.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-label">Caption</span><span class="type-spec">11px / 600</span></div>
+        <div class="type-sample" style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-faint);">Predictive Intelligence Layer</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-label">Mono</span><span class="type-spec">12px / 400</span></div>
+        <div class="type-sample" style="font-size:12px;font-family:monospace;color:var(--text-muted);">#3ECF8E · rgb(62, 207, 142)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+
+  <!-- ══════════════════
+       COMPONENTS
+  ══════════════════ -->
+  <div class="section" id="components">
+    <span class="section-tag">04 — Components</span>
+    <h2 class="section-title">UI Components</h2>
+    <p class="section-sub">Core interactive elements used across the Orbit platform and marketing materials.</p>
+
+    <!-- Buttons -->
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin-bottom:16px;">
+      <div class="component-label">Buttons</div>
+      <div class="component-row">
+        <button class="btn btn-primary">Request Access</button>
+        <button class="btn btn-secondary">View Platform</button>
+        <button class="btn btn-ghost">Learn More</button>
+      </div>
+      <div class="component-row">
+        <button class="btn btn-primary btn-sm">Small Primary</button>
+        <button class="btn btn-ghost btn-sm">Small Ghost</button>
+        <button class="btn btn-primary btn-lg">Large Primary</button>
+      </div>
+    </div>
+
+    <!-- Badges -->
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin-bottom:16px;">
+      <div class="component-label">Badges</div>
+      <div class="component-row">
+        <span class="badge badge-green"><span class="badge-dot"></span>VEO</span>
+        <span class="badge badge-teal"><span class="badge-dot"></span>VSO</span>
+        <span class="badge badge-amber"><span class="badge-dot"></span>VPGO</span>
+        <span class="badge badge-purple"><span class="badge-dot"></span>VCO</span>
+        <span class="badge badge-rose"><span class="badge-dot"></span>Alert</span>
+      </div>
+    </div>
+
+    <!-- Tags -->
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin-bottom:16px;">
+      <div class="component-label">Tags</div>
+      <div class="component-row">
+        <span class="tag tag-green">Approved</span>
+        <span class="tag tag-purple">In Review</span>
+        <span class="tag tag-muted">Draft</span>
+        <span class="tag" style="background:var(--teal-dim);color:var(--teal);">Stewardship</span>
+        <span class="tag" style="background:var(--amber-dim);color:var(--amber);">Planned Giving</span>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin-bottom:16px;">
+      <div class="component-label">Cards</div>
+      <div class="component-row" style="align-items:flex-start;">
+        <div class="card-demo">
+          <div class="card-demo-title">Virtual Engagement Officer</div>
+          <div class="card-demo-sub">Always-on donor discovery and outreach, routed through your gift officers for approval.</div>
+        </div>
+        <div class="card-demo" style="border-top:2px solid var(--green);">
+          <div class="card-demo-title" style="color:var(--green);">Active Card</div>
+          <div class="card-demo-sub">Highlighted variant with green top border for active or featured states.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inputs -->
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;">
+      <div class="component-label">Form Inputs</div>
+      <div class="component-row">
+        <input class="input-demo" type="text" placeholder="your@university.edu">
+        <input class="input-demo" type="text" value="Westfield University" style="border-color:var(--green);box-shadow:0 0 0 3px rgba(62,207,142,0.12);">
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+
+  <!-- ══════════════════
+       SPACING
+  ══════════════════ -->
+  <div class="section" id="spacing">
+    <span class="section-tag">05 — Spacing & Radius</span>
+    <h2 class="section-title">Spacing & Radius</h2>
+    <p class="section-sub">Orbit uses an 8px base grid. All spacing values are multiples of 4 or 8.</p>
+
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin-bottom:20px;">
+      <div class="component-label" style="margin-bottom:16px;">Spacing Scale</div>
+      <div class="spacing-grid">
+        <div class="spacing-row"><div class="spacing-block" style="width:4px;"></div><div class="spacing-meta"><span class="spacing-token">4px</span><span class="spacing-px">0.25rem</span><span class="spacing-use">Micro gaps, icon padding</span></div></div>
+        <div class="spacing-row"><div class="spacing-block" style="width:8px;"></div><div class="spacing-meta"><span class="spacing-token">8px</span><span class="spacing-px">0.5rem</span><span class="spacing-use">Tight spacing, inline gaps</span></div></div>
+        <div class="spacing-row"><div class="spacing-block" style="width:12px;"></div><div class="spacing-meta"><span class="spacing-token">12px</span><span class="spacing-px">0.75rem</span><span class="spacing-use">Component internal spacing</span></div></div>
+        <div class="spacing-row"><div class="spacing-block" style="width:16px;"></div><div class="spacing-meta"><span class="spacing-token">16px</span><span class="spacing-px">1rem</span><span class="spacing-use">Card padding, grid gaps</span></div></div>
+        <div class="spacing-row"><div class="spacing-block" style="width:24px;"></div><div class="spacing-meta"><span class="spacing-token">24px</span><span class="spacing-px">1.5rem</span><span class="spacing-use">Section padding, card body</span></div></div>
+        <div class="spacing-row"><div class="spacing-block" style="width:32px;"></div><div class="spacing-meta"><span class="spacing-token">32px</span><span class="spacing-px">2rem</span><span class="spacing-use">Component separation</span></div></div>
+        <div class="spacing-row"><div class="spacing-block" style="width:48px;"></div><div class="spacing-meta"><span class="spacing-token">48px</span><span class="spacing-px">3rem</span><span class="spacing-use">Section margins</span></div></div>
+        <div class="spacing-row"><div class="spacing-block" style="width:64px;"></div><div class="spacing-meta"><span class="spacing-token">64px</span><span class="spacing-px">4rem</span><span class="spacing-use">Large section padding</span></div></div>
+        <div class="spacing-row"><div class="spacing-block" style="width:100px;"></div><div class="spacing-meta"><span class="spacing-token">100px</span><span class="spacing-px">6.25rem</span><span class="spacing-use">Page section vertical rhythm</span></div></div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;">
+      <div class="component-label" style="margin-bottom:20px;">Border Radius</div>
+      <div class="radius-grid">
+        <div class="radius-demo" style="border-radius:6px;"><span class="radius-token">--radius-sm</span><span class="radius-px">6px</span></div>
+        <div class="radius-demo" style="border-radius:10px;"><span class="radius-token">--radius-md</span><span class="radius-px">10px</span></div>
+        <div class="radius-demo" style="border-radius:14px;"><span class="radius-token">--radius-lg</span><span class="radius-px">14px</span></div>
+        <div class="radius-demo" style="border-radius:20px;"><span class="radius-token">--radius-xl</span><span class="radius-px">20px</span></div>
+        <div class="radius-demo" style="border-radius:100px;width:120px;"><span class="radius-token">Pill</span><span class="radius-px">100px</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+
+  <!-- ══════════════════
+       AGENT IDENTITIES
+  ══════════════════ -->
+  <div class="section" id="agents">
+    <span class="section-tag">06 — Agent Identities</span>
+    <h2 class="section-title">Virtual Officer Identities</h2>
+    <p class="section-sub">Each Virtual Officer has a dedicated color identity used consistently across the platform, dashboards, and communications.</p>
+
+    <div class="agent-grid">
+
+      <div class="agent-card veo">
+        <div class="agent-abbr veo">VEO</div>
+        <div class="agent-name">Virtual Engagement Officer</div>
+        <div style="font-size:12.5px;color:var(--text-muted);line-height:1.55;margin-top:6px;">Always-on donor discovery and outreach</div>
+        <div class="agent-color-row">
+          <div class="agent-color-swatch" style="background:#3ECF8E;" onclick="copyColor('#3ECF8E')"></div>
+          <span class="agent-color-hex">#3ECF8E — Green</span>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:8px;">
+          <span class="badge badge-green" style="font-size:10px;">Primary Color</span>
+          <span class="tag tag-green" style="font-size:10px;">Active</span>
+        </div>
+      </div>
+
+      <div class="agent-card vso">
+        <div class="agent-abbr vso">VSO</div>
+        <div class="agent-name">Virtual Stewardship Officer</div>
+        <div style="font-size:12.5px;color:var(--text-muted);line-height:1.55;margin-top:6px;">Relationship depth and retention at scale</div>
+        <div class="agent-color-row">
+          <div class="agent-color-swatch" style="background:#2DD4BF;" onclick="copyColor('#2DD4BF')"></div>
+          <span class="agent-color-hex">#2DD4BF — Teal</span>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:8px;">
+          <span class="badge badge-teal" style="font-size:10px;">Primary Color</span>
+        </div>
+      </div>
+
+      <div class="agent-card vpgo">
+        <div class="agent-abbr vpgo">VPGO</div>
+        <div class="agent-name">Virtual Planned Giving Officer</div>
+        <div style="font-size:12.5px;color:var(--text-muted);line-height:1.55;margin-top:6px;">Patient intelligence for complex gifts</div>
+        <div class="agent-color-row">
+          <div class="agent-color-swatch" style="background:#F59E0B;" onclick="copyColor('#F59E0B')"></div>
+          <span class="agent-color-hex">#F59E0B — Amber</span>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:8px;">
+          <span class="badge badge-amber" style="font-size:10px;">Primary Color</span>
+        </div>
+      </div>
+
+      <div class="agent-card vco">
+        <div class="agent-abbr vco">VCO</div>
+        <div class="agent-name">Virtual Campaign Officer</div>
+        <div style="font-size:12.5px;color:var(--text-muted);line-height:1.55;margin-top:6px;">Campaign intelligence and coordination</div>
+        <div class="agent-color-row">
+          <div class="agent-color-swatch" style="background:#A78BFA;" onclick="copyColor('#A78BFA')"></div>
+          <span class="agent-color-hex">#A78BFA — Purple</span>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:8px;">
+          <span class="badge badge-purple" style="font-size:10px;">Primary Color</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+
+  <!-- ══════════════════
+       VOICE & TONE
+  ══════════════════ -->
+  <div class="section" id="voice">
+    <span class="section-tag">07 — Voice & Tone</span>
+    <h2 class="section-title">Voice & Tone</h2>
+    <p class="section-sub">Orbit speaks like a trusted intelligence partner — confident, precise, and deeply respectful of the work advancement professionals do. Never hype. Never jargon.</p>
+
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin-bottom:20px;">
+      <div class="component-label" style="margin-bottom:16px;">Brand Personality</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+        <div style="background:var(--bg-elevated);border-radius:var(--radius-md);padding:16px;">
+          <div style="font-size:15px;font-weight:700;color:var(--green);margin-bottom:6px;">Confident</div>
+          <div style="font-size:12.5px;color:var(--text-muted);line-height:1.55;">We make clear, direct statements. We don't hedge what Orbit does.</div>
+        </div>
+        <div style="background:var(--bg-elevated);border-radius:var(--radius-md);padding:16px;">
+          <div style="font-size:15px;font-weight:700;color:var(--purple);margin-bottom:6px;">Precise</div>
+          <div style="font-size:12.5px;color:var(--text-muted);line-height:1.55;">Specific language. Real capabilities. No invented metrics or vague promises.</div>
+        </div>
+        <div style="background:var(--bg-elevated);border-radius:var(--radius-md);padding:16px;">
+          <div style="font-size:15px;font-weight:700;color:var(--teal);margin-bottom:6px;">Respectful</div>
+          <div style="font-size:12.5px;color:var(--text-muted);line-height:1.55;">Gift officers are professionals. Orbit augments them — it never replaces them.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="voice-grid">
+      <div class="voice-card do">
+        <div class="voice-card-label">✓ Write Like This</div>
+        <div class="voice-item"><span class="voice-icon">✓</span>"Orbit surfaces 10 predictive signals per donor — openly, not as a black box."</div>
+        <div class="voice-item"><span class="voice-icon">✓</span>"Every AI action routes through your gift officers for approval."</div>
+        <div class="voice-item"><span class="voice-icon">✓</span>"Built for private universities with major gift programs."</div>
+        <div class="voice-item"><span class="voice-icon">✓</span>"Orbit augments your team. It never bypasses them."</div>
+        <div class="voice-item"><span class="voice-icon">✓</span>"Four autonomous Virtual Officers. One advancement mission."</div>
+      </div>
+      <div class="voice-card dont">
+        <div class="voice-card-label">✕ Avoid This</div>
+        <div class="voice-item"><span class="voice-icon">✕</span>"Revolutionary AI that transforms fundraising forever."</div>
+        <div class="voice-item"><span class="voice-icon">✕</span>"10x your gift officer productivity instantly."</div>
+        <div class="voice-item"><span class="voice-icon">✕</span>"Powered by cutting-edge machine learning algorithms."</div>
+        <div class="voice-item"><span class="voice-icon">✕</span>"Replaces your advancement team with smart automation."</div>
+        <div class="voice-item"><span class="voice-icon">✕</span>"The future of fundraising is here."</div>
+      </div>
+    </div>
+
+    <!-- Naming conventions -->
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin-top:16px;">
+      <div class="component-label" style="margin-bottom:16px;">Naming Conventions</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:16px;padding:10px 14px;background:var(--bg-elevated);border-radius:var(--radius-md);">
+          <div style="font-size:13px;font-weight:600;color:var(--text);width:200px;">Product Name</div>
+          <div style="font-size:13px;color:var(--green);font-weight:600;">Orbit</div>
+          <div style="font-size:12px;color:var(--text-faint);">Always capitalized. Never "ORBIT" or "orbit".</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;padding:10px 14px;background:var(--bg-elevated);border-radius:var(--radius-md);">
+          <div style="font-size:13px;font-weight:600;color:var(--text);width:200px;">Category</div>
+          <div style="font-size:13px;color:var(--purple);font-weight:600;">Autonomous Advancement Intelligence</div>
+          <div style="font-size:12px;color:var(--text-faint);">Full category name on first use.</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;padding:10px 14px;background:var(--bg-elevated);border-radius:var(--radius-md);">
+          <div style="font-size:13px;font-weight:600;color:var(--text);width:200px;">Agent Names</div>
+          <div style="font-size:13px;color:var(--text-soft);font-weight:600;">VEO · VSO · VPGO · VCO</div>
+          <div style="font-size:12px;color:var(--text-faint);">Always all caps. Full name on first reference.</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;padding:10px 14px;background:var(--bg-elevated);border-radius:var(--radius-md);">
+          <div style="font-size:13px;font-weight:600;color:var(--text);width:200px;">Intelligence Layer</div>
+          <div style="font-size:13px;color:var(--text-soft);font-weight:600;">Predictive Intelligence Layer</div>
+          <div style="font-size:12px;color:var(--text-faint);">Capitalize as a proper noun.</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;padding:10px 14px;background:var(--bg-elevated);border-radius:var(--radius-md);">
+          <div style="font-size:13px;font-weight:600;color:var(--text);width:200px;">Approval Workflow</div>
+          <div style="font-size:13px;color:var(--text-soft);font-weight:600;">Human-in-the-Loop (HITL)</div>
+          <div style="font-size:12px;color:var(--text-faint);">Spell out on first use, abbreviate after.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="margin-top:80px;padding-top:32px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <svg width="20" height="20" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="5" fill="#F0F2F5"/>
+        <circle cx="20" cy="20" r="14" stroke="#3ECF8E" stroke-width="1.5" stroke-dasharray="5 2.5" fill="none"/>
+        <circle cx="34" cy="20" r="3" fill="#A78BFA"/>
+      </svg>
+      <span style="font-size:14px;font-weight:700;color:var(--text);">Orbit<em style="color:var(--green);font-style:normal;">.</em></span>
+    </div>
+    <div style="font-size:12px;color:var(--text-faint);">Brand Kit v1.0 · 2026 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c1a2aeada8af81a5aeafaeb3aeb3a3a8b5efa2aeac">[email&#160;protected]</a></div>
+  </div>
+
+</main>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function downloadPDF() {
+  // Set document title so the saved PDF filename is clean
+  const prev = document.title;
+  document.title = 'Orbit-Brand-Kit-2026';
+  window.print();
+  document.title = prev;
+}
+
+function setActive(el) {
+  document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function copyColor(val) {
+  navigator.clipboard.writeText(val).then(() => {
+    const t = document.getElementById('toast');
+    t.textContent = 'Copied ' + val;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2000);
+  });
+}
+
+// Highlight active section on scroll
+const sections = document.querySelectorAll('.section');
+const links = document.querySelectorAll('.sidebar-link');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= 
